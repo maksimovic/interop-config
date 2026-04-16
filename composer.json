@@ -72,6 +72,7 @@
     "cs-fix": "phpcbf",
     "test": "phpunit --no-coverage",
     "test-coverage": "phpunit",
+    "test:coverage": "phpunit --coverage-text --coverage-html build/coverage --coverage-clover build/logs/clover.xml",
     "docheader": "docheader check src/ test/ benchmark/",
     "docs": "bookdown doc/bookdown.json",
     "benchmark": "phpbench run -v --report=table"
