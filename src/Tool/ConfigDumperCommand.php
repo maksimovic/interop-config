@@ -40,7 +40,7 @@ EOH;
      */
     private $configDumper;
 
-    public function __construct(ConsoleHelper $helper = null, ConfigDumper $configReader = null)
+    public function __construct(?ConsoleHelper $helper = null, ?ConfigDumper $configReader = null)
     {
         parent::__construct($helper);
         $this->configDumper = $configReader ?: new ConfigDumper($this->helper);

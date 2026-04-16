@@ -77,7 +77,7 @@ class ConfigReaderTest extends TestCase
     {
         $cut = new ConfigReader($this->consoleHelper);
 
-        $fullConfig = $this->getTestConfig();
+        $fullConfig = self::getTestConfig();
 
         $config = $cut->readConfig($fullConfig, TestAsset\ConnectionConfiguration::class);
 
@@ -92,7 +92,7 @@ class ConfigReaderTest extends TestCase
         TestAsset\TestStream::$inputStack = ['unknown', 'orm_default'];
         $cut = new ConfigReader($this->consoleHelper);
 
-        $fullConfig = $this->getTestConfig();
+        $fullConfig = self::getTestConfig();
 
         $config = $cut->readConfig($fullConfig, TestAsset\UniversalContainerIdConfiguration::class);
 
@@ -112,7 +112,7 @@ class ConfigReaderTest extends TestCase
         TestAsset\TestStream::$inputStack = [''];
         $cut = new ConfigReader($this->consoleHelper);
 
-        $fullConfig = $this->getTestConfig();
+        $fullConfig = self::getTestConfig();
 
         $config = $cut->readConfig($fullConfig, TestAsset\UniversalContainerIdConfiguration::class);
 
@@ -137,7 +137,7 @@ class ConfigReaderTest extends TestCase
      *
      * @return array
      */
-    private function getTestConfig(): array
+    private static function getTestConfig(): array
     {
         // Load the user-defined test configuration file, if it exists; otherwise, load default
         if (is_readable('test/TestConfig.php')) {

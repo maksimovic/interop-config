@@ -69,9 +69,9 @@ class ConfigDumperTest extends TestCase
         TestAsset\TestStream::$data = [];
     }
 
-    public function providerConfig()
+    public static function providerConfig()
     {
-        $testConfig = $this->getTestConfig();
+        $testConfig = self::getTestConfig();
 
         // order is expected, config from file
         return [
@@ -99,9 +99,9 @@ class ConfigDumperTest extends TestCase
         self::assertSame($expected, $config);
     }
 
-    public function providerConfigId()
+    public static function providerConfigId()
     {
-        $testConfig = $this->getTestConfig();
+        $testConfig = self::getTestConfig();
 
         // order is expected, config from file
         return [
@@ -153,9 +153,9 @@ class ConfigDumperTest extends TestCase
         self::assertSame($expected, $config);
     }
 
-    public function providerDefaultOptions()
+    public static function providerDefaultOptions()
     {
-        $testConfig = $this->getTestConfig();
+        $testConfig = self::getTestConfig();
 
         $defaultConfig = [
             'doctrine' => [
@@ -206,9 +206,9 @@ class ConfigDumperTest extends TestCase
         self::assertSame($expected, $config);
     }
 
-    public function providerDefaultMandatoryOptions()
+    public static function providerDefaultMandatoryOptions()
     {
-        $testConfig = $this->getTestConfig();
+        $testConfig = self::getTestConfig();
 
         $configDefault = [
             'doctrine' => [
@@ -305,9 +305,9 @@ class ConfigDumperTest extends TestCase
         self::assertSame($expected, $config);
     }
 
-    public function providerRecursiveMandatoryOptions()
+    public static function providerRecursiveMandatoryOptions()
     {
-        $testConfig = $this->getTestConfig();
+        $testConfig = self::getTestConfig();
 
         $config = [
             'doctrine' => [
@@ -435,7 +435,7 @@ EOF;
      *
      * @return array
      */
-    private function getTestConfig(): array
+    private static function getTestConfig(): array
     {
         // Load the user-defined test configuration file, if it exists; otherwise, load default
         if (is_readable('test/TestConfig.php')) {

@@ -10,7 +10,7 @@
 declare(strict_types = 1);
 
 // set error reporting
-error_reporting(E_ALL | E_STRICT);
+error_reporting(E_ALL);
 
 chdir(dirname(__DIR__));
 

@@ -22,7 +22,7 @@ class ConfigReader extends AbstractConfig
      */
     private $helper;
 
-    public function __construct(ConsoleHelper $helper = null)
+    public function __construct(?ConsoleHelper $helper = null)
     {
         $this->helper = $helper ?: new ConsoleHelper();
     }

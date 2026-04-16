@@ -24,27 +24,27 @@ class OnlyIterator implements \Iterator
         $this->data = $data;
     }
 
-    public function current()
+    public function current(): mixed
     {
         return current($this->data);
     }
 
-    public function next()
+    public function next(): void
     {
         next($this->data);
     }
 
-    public function key()
+    public function key(): mixed
     {
         return key($this->data);
     }
 
-    public function valid()
+    public function valid(): bool
     {
-        return current($this->data);
+        return current($this->data) !== false;
     }
 
-    public function rewind()
+    public function rewind(): void
     {
         reset($this->data);
     }
