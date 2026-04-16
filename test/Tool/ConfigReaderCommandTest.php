@@ -104,7 +104,7 @@ EOF;
         self::assertSame($expectedOutput, TestAsset\TestStream::$data['output']);
     }
 
-    public function providerMultipleConfigIds()
+    public static function providerMultipleConfigIds()
     {
         return [
             [self::CONFIG_FILE],

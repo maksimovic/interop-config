@@ -43,7 +43,7 @@ EOH;
      */
     private $configReader;
 
-    public function __construct(ConsoleHelper $helper = null, ConfigReader $configReader = null)
+    public function __construct(?ConsoleHelper $helper = null, ?ConfigReader $configReader = null)
     {
         parent::__construct($helper);
         $this->configReader = $configReader ?: new ConfigReader($this->helper);

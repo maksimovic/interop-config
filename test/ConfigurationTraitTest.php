@@ -79,7 +79,7 @@ class ConfigurationTraitTest extends TestCase
             $stub->canRetrieveOptions(['doctrine' => ['connection' => new \stdClass()]])
         );
 
-        self::assertTrue($stub->canRetrieveOptions($this->getTestConfig()));
+        self::assertTrue($stub->canRetrieveOptions(self::getTestConfig()));
     }
 
     /**
@@ -110,7 +110,7 @@ class ConfigurationTraitTest extends TestCase
             )
         );
 
-        self::assertTrue($stub->canRetrieveOptions($this->getTestConfig(), 'orm_default'));
+        self::assertTrue($stub->canRetrieveOptions(self::getTestConfig(), 'orm_default'));
     }
 
     /**
@@ -371,7 +371,7 @@ class ConfigurationTraitTest extends TestCase
             $config['doctrine']['connection']['orm_default']['params']['user']
         );
 
-        $config = $this->getTestConfig();
+        $config = self::getTestConfig();
 
         # remove main index key
         unset($config['doctrine']['connection']['orm_default']['params']);
@@ -661,33 +661,33 @@ class ConfigurationTraitTest extends TestCase
         self::assertSame($options['params']['password'], $password);
     }
 
-    public function providerConfig(): array
+    public static function providerConfig(): array
     {
         return [
-            [$this->getTestConfig()],
-            [new \ArrayObject($this->getTestConfig())],
-            [new \ArrayIterator($this->getTestConfig())],
+            [self::getTestConfig()],
+            [new \ArrayObject(self::getTestConfig())],
+            [new \ArrayIterator(self::getTestConfig())],
         ];
     }
 
-    public function providerConfigObjects(): array
+    public static function providerConfigObjects(): array
     {
         return [
-            [$this->getTestConfig(), UniversalContainerIdConfiguration::TYPE_ARRAY_ARRAY],
-            [new \ArrayObject($this->getTestConfig()), UniversalContainerIdConfiguration::TYPE_ARRAY_ARRAY],
-            [new \ArrayIterator($this->getTestConfig()), UniversalContainerIdConfiguration::TYPE_ARRAY_ARRAY],
+            [self::getTestConfig(), UniversalContainerIdConfiguration::TYPE_ARRAY_ARRAY],
+            [new \ArrayObject(self::getTestConfig()), UniversalContainerIdConfiguration::TYPE_ARRAY_ARRAY],
+            [new \ArrayIterator(self::getTestConfig()), UniversalContainerIdConfiguration::TYPE_ARRAY_ARRAY],
 
-            [$this->getTestConfig(), UniversalContainerIdConfiguration::TYPE_ARRAY_OBJECT],
-            [new \ArrayObject($this->getTestConfig()), UniversalContainerIdConfiguration::TYPE_ARRAY_OBJECT],
-            [new \ArrayIterator($this->getTestConfig()), UniversalContainerIdConfiguration::TYPE_ARRAY_OBJECT],
+            [self::getTestConfig(), UniversalContainerIdConfiguration::TYPE_ARRAY_OBJECT],
+            [new \ArrayObject(self::getTestConfig()), UniversalContainerIdConfiguration::TYPE_ARRAY_OBJECT],
+            [new \ArrayIterator(self::getTestConfig()), UniversalContainerIdConfiguration::TYPE_ARRAY_OBJECT],
 
-            [$this->getTestConfig(), UniversalContainerIdConfiguration::TYPE_ARRAY_ITERATOR],
-            [new \ArrayObject($this->getTestConfig()), UniversalContainerIdConfiguration::TYPE_ARRAY_ITERATOR],
-            [new \ArrayIterator($this->getTestConfig()), UniversalContainerIdConfiguration::TYPE_ARRAY_ITERATOR],
+            [self::getTestConfig(), UniversalContainerIdConfiguration::TYPE_ARRAY_ITERATOR],
+            [new \ArrayObject(self::getTestConfig()), UniversalContainerIdConfiguration::TYPE_ARRAY_ITERATOR],
+            [new \ArrayIterator(self::getTestConfig()), UniversalContainerIdConfiguration::TYPE_ARRAY_ITERATOR],
 
-            [$this->getTestConfig(), UniversalContainerIdConfiguration::TYPE_ONLY_ITERATOR],
-            [new \ArrayObject($this->getTestConfig()), UniversalContainerIdConfiguration::TYPE_ONLY_ITERATOR],
-            [new \ArrayIterator($this->getTestConfig()), UniversalContainerIdConfiguration::TYPE_ONLY_ITERATOR],
+            [self::getTestConfig(), UniversalContainerIdConfiguration::TYPE_ONLY_ITERATOR],
+            [new \ArrayObject(self::getTestConfig()), UniversalContainerIdConfiguration::TYPE_ONLY_ITERATOR],
+            [new \ArrayIterator(self::getTestConfig()), UniversalContainerIdConfiguration::TYPE_ONLY_ITERATOR],
         ];
     }
 
@@ -696,7 +696,7 @@ class ConfigurationTraitTest extends TestCase
      *
      * @return array
      */
-    private function getTestConfig(): array
+    private static function getTestConfig(): array
     {
         // Load the user-defined test configuration file, if it exists; otherwise, load default
         if (is_readable('test/TestConfig.php')) {

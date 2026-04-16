@@ -1,31 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- disable strict to debug tests -->
-<phpunit bootstrap="./test/Bootstrap.php"
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+         bootstrap="./test/Bootstrap.php"
          colors="true"
-         convertErrorsToExceptions="true"
-         convertNoticesToExceptions="true"
-         convertWarningsToExceptions="true"
-         forceCoversAnnotation="true"
-         backupGlobals="true"
-         backupStaticAttributes="false">
-
+         cacheDirectory="build/cache"
+>
     <testsuites>
         <testsuite name="Sake ConfigInterop Test Suite">
             <directory>./test</directory>
         </testsuite>
     </testsuites>
 
-    <filter>
-        <whitelist processUncoveredFilesFromWhitelist="true">
+    <source>
+        <include>
             <directory suffix=".php">./src</directory>
-        </whitelist>
-    </filter>
-
-    <logging>
-        <log type="coverage-html" target="./build/logs/report/"
-             lowUpperBound="35" highLowerBound="70" showUncoveredFiles="true" />
-        <log type="testdox-html" target="./build/logs/testdox.html" />
-        <log type="coverage-clover" target="build/logs/clover.xml"/>
-    </logging>
-
+        </include>
+    </source>
 </phpunit>

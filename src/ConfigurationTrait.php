@@ -40,7 +40,7 @@ trait ConfigurationTrait
      * @param string|null $configId Config name, must be provided if factory uses RequiresConfigId interface
      * @return bool True if options depending on dimensions are available, otherwise false
      */
-    public function canRetrieveOptions($config, string $configId = null): bool
+    public function canRetrieveOptions($config, ?string $configId = null): bool
     {
         $dimensions = $this->dimensions();
         $dimensions = $dimensions instanceof Iterator ? iterator_to_array($dimensions) : $dimensions;
@@ -50,7 +50,8 @@ trait ConfigurationTrait
         }
 
         foreach ($dimensions as $dimension) {
-            if (((array)$config !== $config && !$config instanceof ArrayAccess)
+            if ($dimension === null
+                || ((array)$config !== $config && !$config instanceof ArrayAccess)
                 || (!isset($config[$dimension]) && $this instanceof RequiresMandatoryOptions)
                 || (!isset($config[$dimension]) && !$this instanceof ProvidesDefaultOptions)
             ) {
@@ -81,7 +82,7 @@ trait ConfigurationTrait
      * @throws Exception\OptionNotFoundException If no options are available
      * @throws Exception\MandatoryOptionNotFoundException If a mandatory option is missing
      */
-    public function options($config, string $configId = null)
+    public function options($config, ?string $configId = null)
     {
         $dimensions = $this->dimensions();
         $dimensions = $dimensions instanceof Iterator ? iterator_to_array($dimensions) : $dimensions;
@@ -100,7 +101,7 @@ trait ConfigurationTrait
                 throw Exception\UnexpectedValueException::invalidOptions($dimensions, $dimension);
             }
 
-            if (!isset($config[$dimension])) {
+            if ($dimension === null || !isset($config[$dimension])) {
                 if (!$this instanceof RequiresMandatoryOptions && $this instanceof ProvidesDefaultOptions) {
                     break;
                 }
@@ -137,7 +138,7 @@ trait ConfigurationTrait
      * @return array|ArrayAccess options Default options or an empty array
      * @throws Exception\MandatoryOptionNotFoundException If a mandatory option is missing
      */
-    public function optionsWithFallback($config, string $configId = null)
+    public function optionsWithFallback($config, ?string $configId = null)
     {
         $options = [];
 

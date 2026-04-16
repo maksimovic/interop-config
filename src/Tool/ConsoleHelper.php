@@ -183,7 +183,7 @@ class ConsoleHelper
         }
 
         try {
-            return function_exists('posix_isatty') && posix_isatty($resource);
+            return function_exists('posix_isatty') && @posix_isatty($resource);
         } catch (\Throwable $e) {
             return false;
         }

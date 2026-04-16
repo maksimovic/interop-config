@@ -1,5 +1,5 @@
 {
-  "name": "sandrokeil/interop-config",
+  "name": "maksimovic/interop-config",
   "description": "Provides interfaces and a concrete implementation to create instances depending on configuration via factory classes and ensures a valid config structure. It can also be used to auto discover factories and to create configuration files.",
   "homepage": "https://github.com/sandrokeil/interop-config",
   "license": "BSD-3-Clause",
@@ -42,17 +42,11 @@
     }
   },
   "require": {
-    "php": "^7.1 || ^8.0"
+    "php": "^8.1"
   },
   "require-dev": {
-    "bookdown/bookdown": "^1.1.0",
-    "malukenho/docheader": "^0.1.7",
-    "php-coveralls/php-coveralls": "^2.1",
-    "phpbench/phpbench": "^0.15",
-    "phpunit/phpunit": "^7.0.1 || ^9.3.8",
-    "squizlabs/php_codesniffer": "^3.0",
-    "webuni/commonmark-attributes-extension": "^0.5.0",
-    "webuni/commonmark-table-extension": "^0.6.1"
+    "phpunit/phpunit": "^10.5",
+    "squizlabs/php_codesniffer": "^3.0"
   },
   "suggest": {
     "psr/container": "To retrieve config in your factories"
@@ -78,6 +72,7 @@
     "cs-fix": "phpcbf",
     "test": "phpunit --no-coverage",
     "test-coverage": "phpunit",
+    "test:coverage": "phpunit --coverage-text --coverage-html build/coverage --coverage-clover build/logs/clover.xml",
     "docheader": "docheader check src/ test/ benchmark/",
     "docs": "bookdown doc/bookdown.json",
     "benchmark": "phpbench run -v --report=table"

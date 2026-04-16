@@ -16,6 +16,7 @@ namespace InteropTest\Config\TestAsset;
  */
 class TestStream
 {
+    public $context;
     private $position;
     private $varname;
 
